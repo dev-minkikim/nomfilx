@@ -1,10 +1,10 @@
-# Netflix clone coding with React
+# Popcorn Time clone coding with React
 
 ## Screens
 
-- [ ] Home
-- [ ] TV Show
-- [ ] Search
+- [x] Home
+- [x] TV Show
+- [x] Search
 - [ ] Detail
 
 ## API Verbs

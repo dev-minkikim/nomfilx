@@ -28,7 +28,7 @@ export default class extends React.Component {
       });
     } catch {
       this.setState({
-        error: "TV를 찾지 못했어 ..",
+        error: "TV 프로그램을 찾지 못했어 ..",
       });
     } finally {
       this.setState({
