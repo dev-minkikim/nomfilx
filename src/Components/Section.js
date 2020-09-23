@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 const Container = styled.div`
-  margin-bottom: 50px;
+  :not(:last-child) {
+    margin-bottom: 50px;
+  }
 `;
 const Title = styled.span`
   font-size: 16px;
