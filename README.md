@@ -1,6 +1,6 @@
 # Popcorn Time clone coding with React
 
-# Preview https://condescending-bardeen-441b8c.netlify.app/
+## Preview https://condescending-bardeen-441b8c.netlify.app/
 ## Screens
 
 - [x] Home
