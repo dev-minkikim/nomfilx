@@ -7,6 +7,7 @@ export default class extends React.Component {
     result: null,
     error: null,
     loading: true,
+    videoKey: null,
   };
   async componentDidMount() {
     const {
@@ -22,12 +23,22 @@ export default class extends React.Component {
     }
     this.isMovie = pathname.includes("/movie/");
     let result = null;
+    let videoKey = null;
     try {
       if (this.isMovie) {
         ({ data: result } = await moviesApi.movieDetail(parsedId));
+
+        ({
+          data: { results: videoKey },
+        } = await moviesApi.videoKey(parsedId));
       } else {
         ({ data: result } = await tvApi.tvDetail(parsedId));
+
+        ({
+          data: { results: videoKey },
+        } = await tvApi.videoKey(parsedId));
       }
+      this.setState({ videoKey });
     } catch {
       this.setState({ error: "못찾았당" });
     } finally {
@@ -35,7 +46,14 @@ export default class extends React.Component {
     }
   }
   render() {
-    const { result, error, loading } = this.state;
-    return <DetailPresenter result={result} error={error} loading={loading} />;
+    const { result, error, loading, videoKey } = this.state;
+    return (
+      <DetailPresenter
+        result={result}
+        error={error}
+        loading={loading}
+        videoKey={videoKey}
+      />
+    );
   }
 }

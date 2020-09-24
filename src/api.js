@@ -6,7 +6,7 @@ const api = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
   params: {
     api_key: "1d25c5955966ff38cd4aef02e2e9908f",
-    language: "kr",
+    language: "en",
   },
 });
 
@@ -27,6 +27,7 @@ export const moviesApi = {
         query: encodeURIComponent(term),
       },
     }),
+  videoKey: (id) => api.get(`movie/${id}/videos`),
 };
 
 export const tvApi = {
@@ -45,4 +46,5 @@ export const tvApi = {
         query: encodeURIComponent(term),
       },
     }),
+  videoKey: (id) => api.get(`tv/${id}/videos`),
 };

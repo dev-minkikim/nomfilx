@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Loader from "../../Components/Loader";
 import Message from "../../Components/Message";
-
+import Helmet from "react-helmet";
 const Container = styled.div`
   height: calc(100vh - 50px);
   width: 100%;
@@ -41,12 +41,10 @@ const Data = styled.div`
   margin-left: 20px;
 `;
 const Title = styled.h3`
-  font-size: 36px;
-  margin-top: 40px;
+  font-size: 32px;
 `;
 const ItemContainer = styled.div`
   margin-top: 10px;
-  font-size: 20px;
 `;
 const Divider = styled.span`
   margin: 0px 5px;
@@ -58,18 +56,29 @@ const Star = styled.span``;
 const CreatedBy = styled.span`
   display: block;
   margin-top: 10px;
-  font-size: 20px;
-  opacity: 0.6;
 `;
 const List = styled.li`
   margin-top: 5px;
 `;
+const Overview = styled.p`
+  margin-top: 10px;
+  width: 60%;
+  line-height: 20px;
+  opacity: 0.6;
+`;
+const VidoeSrc = styled.iframe`
+  margin-top: 15px;
+  border-radius: 5px;
+`;
 
-const DetailPresenter = ({ result, error, loading }) =>
+const DetailPresenter = ({ result, error, loading, videoKey }) =>
   loading ? (
     <Loader />
   ) : (
     <>
+      <Helmet>
+        <title>{result.title ? result.title : result.name} | NomFlix</title>
+      </Helmet>
       {error ? (
         <Message />
       ) : (
@@ -134,6 +143,12 @@ const DetailPresenter = ({ result, error, loading }) =>
                       </ul>
                     ))}
               </CreatedBy>
+              <Overview>{result.overview}</Overview>
+              <VidoeSrc
+                width="560"
+                height="315"
+                src={`https://www.youtube.com/embed/${videoKey[0].key}`}
+              ></VidoeSrc>
             </Data>
           </Content>
         </Container>
@@ -145,6 +160,7 @@ DetailPresenter.propTypes = {
   result: PropTypes.object,
   error: PropTypes.string,
   loading: PropTypes.bool.isRequired,
+  videoKey: PropTypes.array,
 };
 
 export default DetailPresenter;

@@ -5,7 +5,7 @@
 - [x] Home
 - [x] TV Show
 - [x] Search
-- [ ] Detail
+- [x] Detail
 
 ## API Verbs
 
